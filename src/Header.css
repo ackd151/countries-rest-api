@@ -1,0 +1,31 @@
+.header {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px black;
+}
+
+.title {
+  font-weight: 800;
+}
+
+.theme {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.theme:hover {
+  cursor: pointer;
+}
+
+.theme svg path {
+  fill: purple;
+}
+
+.theme > button {
+  background: none;
+  border: none;
+}
