@@ -4,28 +4,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 5px black;
+  background-color: var(--color-elements);
+  box-shadow: 0 2px 5px var(--color-shadow);
 }
 
 .title {
   font-weight: 800;
 }
 
-.theme {
+.theme-toggle {
   display: flex;
   align-items: center;
   gap: 1rem;
-}
-
-.theme:hover {
-  cursor: pointer;
-}
-
-.theme svg path {
-  fill: purple;
-}
-
-.theme > button {
+  padding: 1rem;
   background: none;
   border: none;
+}
+
+.theme-toggle:hover {
+  cursor: pointer;
 }

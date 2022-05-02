@@ -4,12 +4,14 @@
   --color-elements: hsl(0, 0%, 100%);
   --color-bg: hsl(0, 0%, 98%);
   --color-input: hsl(0, 0%, 52%);
+  --color-shadow: hsl(200, 15%, 58%);
 }
 
 :root.dark {
   --color-text: hsl(0, 0%, 100%);
   --color-elements: hsl(209, 23%, 22%);
   --color-bg: hsl(207, 26%, 17%);
+  --color-shadow: hsl(207, 26%, 14%);
 }
 
 * {
@@ -21,6 +23,7 @@
 button,
 input {
   font: inherit;
+  color: inherit;
 }
 
 html {
@@ -31,4 +34,6 @@ html {
 
 body {
   width: 100vw;
+  color: var(--color-text);
+  background-color: var(--color-bg);
 }
