@@ -15,12 +15,10 @@ function App() {
       .then(
         (result) => {
           setLoaded(true);
-          console.log(result);
           setCountries(result);
         },
         (error) => {
           setLoaded(true);
-          console.log(error);
           setError(error);
         }
       );

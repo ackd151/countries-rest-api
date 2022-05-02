@@ -5,7 +5,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: var(--color-elements);
-  box-shadow: 0 2px 5px var(--color-shadow);
+  box-shadow: var(--box-shadow);
 }
 
 .title {
