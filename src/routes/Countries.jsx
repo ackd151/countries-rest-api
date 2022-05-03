@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Header from "./Header";
-import CountryCard from "./CountryCard";
+import Spinner from "../components/Spinner";
+import CountryCard from "../components/CountryCard";
 
-import "./App.css";
-
-function App() {
+const Countries = () => {
   const [countries, setCountries] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(null);
@@ -27,19 +25,16 @@ function App() {
   if (error) {
     return <div className='error'>Error: {error.message}</div>;
   } else if (!loaded) {
-    return <div className='loading'>Loading...</div>;
+    return <Spinner />;
   } else {
     return (
-      <div className='App'>
-        <Header />
-        <main className='main-content'>
-          {countries.map((country) => (
-            <CountryCard key={country.alpha3Code} country={country} />
-          ))}
-        </main>
-      </div>
+      <main className='main-content'>
+        {countries.map((country) => (
+          <CountryCard key={country.alpha3Code} country={country} />
+        ))}
+      </main>
     );
   }
-}
+};
 
-export default App;
+export default Countries;

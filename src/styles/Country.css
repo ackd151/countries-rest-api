@@ -1,0 +1,69 @@
+.btn {
+  padding: 0.5rem 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background-color: var(--color-elements);
+  border: none;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+}
+
+.country-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 3rem;
+}
+
+.country-flag_wrap {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.025);
+}
+.county-flag_img {
+  width: 100%;
+  aspect-ratio: 5/3;
+  background-position: center;
+  object-fit: cover;
+}
+
+.country-details {
+  width: 45%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.country-details > div {
+  margin: 2rem 0;
+}
+.country-details_specs {
+  display: flex;
+  gap: 3rem;
+}
+.spec {
+  margin-bottom: 0.5rem;
+}
+.col-1,
+.col-2 {
+  width: 50%;
+}
+
+.border-countries {
+  display: flex;
+}
+.label {
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+}
+.border-countries_btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}

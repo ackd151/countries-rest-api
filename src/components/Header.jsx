@@ -3,8 +3,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon as moonSolid } from "@fortawesome/free-solid-svg-icons";
 import { faMoon as moonOutline } from "@fortawesome/free-regular-svg-icons";
-import "./Header.css";
-import { useLocalStorageState } from "./utils/hooks";
+import "../styles/Header.css";
+import { useLocalStorageState } from "../utils/hooks";
 
 library.add(moonSolid, moonOutline);
 
