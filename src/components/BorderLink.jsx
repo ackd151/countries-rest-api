@@ -9,13 +9,15 @@ const BorderLink = ({ borderCode }) => {
   );
 
   if (error) {
-    return <div className='error'>Error</div>;
+    return <div className='error'>Error: {error.message}</div>;
   } else if (loading) {
     return <Spinner />;
-  } else {
-    const urlCountry = data[0].name.official.split(" ").join("-");
-    // console.log(data);
-    // console.log(urlCountry);
+  } else if (data) {
+    console.log(loading);
+    console.log(error);
+    console.log(data);
+    const urlCountry = data[0].name.common.split(" ").join("-");
+    console.log(urlCountry);
     return (
       <Link to={`/${urlCountry}`}>
         <button className='btn'>{data[0].name.common}</button>
