@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import Spinner from "./Spinner";
+import Error from "./Error";
 
 const BorderLink = ({ borderCode }) => {
   const { data, loading, error } = useFetch(
@@ -9,15 +10,11 @@ const BorderLink = ({ borderCode }) => {
   );
 
   if (error) {
-    return <div className='error'>Error: {error.message}</div>;
+    return <Error error={error} />;
   } else if (loading) {
     return <Spinner />;
   } else if (data) {
-    console.log(loading);
-    console.log(error);
-    console.log(data);
     const urlCountry = data[0].name.common.split(" ").join("-");
-    console.log(urlCountry);
     return (
       <Link to={`/${urlCountry}`}>
         <button className='btn'>{data[0].name.common}</button>
