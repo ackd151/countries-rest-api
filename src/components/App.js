@@ -10,8 +10,8 @@ import "../styles/App.css";
 function App() {
   return (
     <div className='App'>
-      <Header />
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route exact path='/' element={<Countries />} />
           <Route exact path=':countryName' element={<Country />} />

@@ -1,37 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import useFetch from "../hooks/useFetch";
 import Spinner from "../components/Spinner";
 import CountryCard from "../components/CountryCard";
 
 const Countries = () => {
-  const [countries, setCountries] = useState([]);
-  const [loaded, setLoaded] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetch("https://restcountries.com/v2/all")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setLoaded(true);
-          setCountries(result);
-        },
-        (error) => {
-          setLoaded(true);
-          setError(error);
-        }
-      );
-  }, []);
+  const {
+    data: countries,
+    loading,
+    error,
+  } = useFetch("https://restcountries.com/v2/all");
 
   if (error) {
-    return <div className='error'>Error: {error.message}</div>;
-  } else if (!loaded) {
+    return <div className='error'>Error</div>;
+  } else if (loading) {
     return <Spinner />;
   } else {
+    console.log(countries);
     return (
       <main className='main-content'>
-        {countries.map((country) => (
-          <CountryCard key={country.alpha3Code} country={country} />
-        ))}
+        {countries &&
+          countries.map((country) => (
+            <CountryCard key={country.alpha3Code} country={country} />
+          ))}
       </main>
     );
   }

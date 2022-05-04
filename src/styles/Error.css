@@ -1,0 +1,22 @@
+.wrapper {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.error {
+  background-color: var(--color-elements);
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  gap: 2rem;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+}

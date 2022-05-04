@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon as moonSolid } from "@fortawesome/free-solid-svg-icons";
 import { faMoon as moonOutline } from "@fortawesome/free-regular-svg-icons";
 import "../styles/Header.css";
-import { useLocalStorageState } from "../utils/hooks";
+import useLocalStorageState from "../hooks/useLocalStorageState";
 
 library.add(moonSolid, moonOutline);
 
@@ -23,7 +24,9 @@ const Header = () => {
   };
   return (
     <header className='header'>
-      <h1 className='title'>Where in the world?</h1>
+      <Link to={"/"}>
+        <h1 className='title'>Where in the world?</h1>
+      </Link>
       <button className='theme-toggle' onClick={darkModeToggleHandler}>
         {mode === "dark" && <FontAwesomeIcon icon='fa-solid fa-moon' />}
         {mode === "light" && <FontAwesomeIcon icon='fa-regular fa-moon' />}
