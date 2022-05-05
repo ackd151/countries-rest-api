@@ -6,7 +6,7 @@ import Error from "./Error";
 
 const BorderLink = ({ borderCode }) => {
   const { data, loading, error } = useFetch(
-    `https://restcountries.com/v3.1/alpha/${borderCode}`
+    `https://restcountries.com/v2/alpha/${borderCode}`
   );
 
   if (error) {
@@ -14,10 +14,10 @@ const BorderLink = ({ borderCode }) => {
   } else if (loading) {
     return <Spinner />;
   } else if (data) {
-    const urlCountry = data[0].name.common.split(" ").join("-");
+    const urlCountry = data.name.split(" ").join("-");
     return (
       <Link to={`/${urlCountry}`}>
-        <button className='btn'>{data[0].name.common}</button>
+        <button className='btn'>{data.name}</button>
       </Link>
     );
   }

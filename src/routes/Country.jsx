@@ -25,9 +25,6 @@ const Country = () => {
   } else if (loading) {
     return <Spinner />;
   } else if (countryResults) {
-    // Need to wait for async useFetch hook
-    // testing, closest match is last in results array - big nope
-    console.log(countryResults);
     const country = bestMatch(countryName, countryResults);
     return (
       <main className='country'>

@@ -1,10 +1,7 @@
 export const bestMatch = (actual, tests) => {
-  console.log("Looking for: ", actual);
-  console.log("In: ", tests);
   let minDiff = 100; // arbitrary number for starting difference value
   let bestMatch = null;
   for (const test of tests) {
-    console.log(test.name);
     const testDiff = levenshteinDistance(actual, test.name);
     if (testDiff <= minDiff) {
       minDiff = testDiff;

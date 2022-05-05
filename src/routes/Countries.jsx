@@ -14,8 +14,7 @@ const Countries = () => {
     return <div className='error'>Error</div>;
   } else if (loading) {
     return <Spinner />;
-  } else {
-    console.log(countries);
+  } else if (countries) {
     return (
       <main className='main-content'>
         {countries &&
