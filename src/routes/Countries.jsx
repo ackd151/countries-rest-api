@@ -3,12 +3,17 @@ import useFetch from "../hooks/useFetch";
 import Spinner from "../components/Spinner";
 import CountryCard from "../components/CountryCard";
 
-const Countries = () => {
+const Countries = ({ filterVal }) => {
+  console.log(filterVal);
   const {
     data: countries,
     loading,
     error,
-  } = useFetch("https://restcountries.com/v2/all");
+  } = useFetch(
+    filterVal === ""
+      ? "https://restcountries.com/v2/all"
+      : `https://restcountries.com/v2/continent/${filterVal}`
+  );
 
   if (error) {
     return <div className='error'>Error</div>;

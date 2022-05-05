@@ -16,7 +16,6 @@ const SearchResults = () => {
   } else if (loading) {
     return <Spinner />;
   } else if (data) {
-    console.log(data);
     return (
       <main className='search-results main-content'>
         {data.map((country) => (
