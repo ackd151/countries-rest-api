@@ -2,18 +2,15 @@ import React from "react";
 import useFetch from "../hooks/useFetch";
 import Spinner from "../components/Spinner";
 import CountryCard from "../components/CountryCard";
+import { useParams } from "react-router-dom";
 
-const Countries = ({ filterVal }) => {
-  console.log(filterVal);
-  const {
-    data: countries,
-    loading,
-    error,
-  } = useFetch(
-    filterVal === ""
-      ? "https://restcountries.com/v2/all"
-      : `https://restcountries.com/v2/continent/${filterVal}`
-  );
+const Countries = () => {
+  const { region } = useParams();
+  const url = region
+    ? `https://restcountries.com/v3.1/region/${region}`
+    : "https://restcountries.com/v3.1/all";
+
+  const { data: countries, loading, error } = useFetch(url);
 
   if (error) {
     return <div className='error'>Error</div>;
@@ -21,12 +18,12 @@ const Countries = ({ filterVal }) => {
     return <Spinner />;
   } else if (countries) {
     return (
-      <main className='main-content'>
+      <div className='countries'>
         {countries &&
           countries.map((country) => (
-            <CountryCard key={country.alpha3Code} country={country} />
+            <CountryCard key={country.cca3} country={country} />
           ))}
-      </main>
+      </div>
     );
   }
 };

@@ -1,9 +1,12 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import Select from "./Select";
 
 import "../styles/Filter.css";
 
 const Filter = ({ onFilterSelect }) => {
+  const navigate = useNavigate();
+
   const [filterVis, setFilterVis] = useState(false);
   const toggleVisOnKey = (ev) => {
     console.log(ev.keyCode);
@@ -27,6 +30,17 @@ const Filter = ({ onFilterSelect }) => {
   document.addEventListener("mousedown", closeSelectElement);
   /* end - click outside */
 
+  const filterSelected = (region) => {
+    // If currently at '/countries' we want all by selected region -> simply navigate to '/countries/:region'
+    // Else we are in '/countries/results' and we want to filter only the subset obtained via the search
+    if (window.location.pathname.split("/").includes("search-results")) {
+      onFilterSelect(region);
+    } else {
+      navigate(`/countries/${region}`);
+    }
+    setFilterVis(false);
+  };
+
   return (
     <div
       className='filter'
@@ -45,7 +59,7 @@ const Filter = ({ onFilterSelect }) => {
         </span>
       </div>
       {filterVis && (
-        <Select isFocused={filterVis} onFilterSelect={onFilterSelect} />
+        <Select isFocused={filterVis} onFilterSelect={filterSelected} />
       )}
     </div>
   );

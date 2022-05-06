@@ -2,26 +2,35 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import CountryCard from "../components/CountryCard";
+import NoResults from "../components/NoResults";
 import useFetch from "../hooks/useFetch";
 
-const SearchResults = () => {
+const SearchResults = ({ filterVal }) => {
   const { query } = useParams();
 
+  console.log(filterVal);
+
   const { data, loading, error } = useFetch(
-    `https://restcountries.com/v2/name/${query}`
+    `https://restcountries.com/v3.1/name/${query}`
   );
 
   if (error) {
-    return <div className='no-results'>No results found for '{query}'</div>;
+    return <NoResults query={query} />;
   } else if (loading) {
     return <Spinner />;
   } else if (data) {
     return (
-      <main className='search-results main-content'>
-        {data.map((country) => (
-          <CountryCard key={country.alpha3Code} country={country} />
-        ))}
-      </main>
+      <div className='search-results countries'>
+        {data.map(
+          (country) =>
+            (country.region.toUpperCase() === filterVal.toUpperCase() && (
+              <CountryCard key={country.cca3} country={country} />
+            )) ||
+            (filterVal === "all" && (
+              <CountryCard key={country.cca3} country={country} />
+            ))
+        )}
+      </div>
     );
   }
 };

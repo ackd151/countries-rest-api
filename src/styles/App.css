@@ -50,19 +50,31 @@ html {
 
 body {
   width: 100vw;
+  min-height: 100vh;
   color: var(--color-text);
   background-color: var(--color-bg);
 }
+#root {
+  min-height: 100vh;
+}
 
-.main-content {
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  height: 100%;
+  flex-grow: 1;
+  margin: 0 3rem 3rem;
+}
+
+.countries {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: min-content;
   gap: 3rem;
-}
-
-main {
-  margin: 3rem;
 }
 
 .btn {
@@ -85,18 +97,18 @@ main {
 
 /* Reduce column count as screen width diminishes */
 @media screen and (max-width: 1000px) {
-  .main-content {
+  .countries {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media screen and (max-width: 800px) {
-  .main-content {
+  .countries {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media screen and (max-width: 600px) {
-  .main-content {
+  .countries {
     grid-template-columns: 1fr;
   }
 }

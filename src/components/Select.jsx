@@ -22,9 +22,9 @@ const Select = ({ isFocused, onFilterSelect }) => {
       <li
         className='option'
         tabIndex={0}
-        onClick={() => onFilterSelect("america")}
+        onClick={() => onFilterSelect("americas")}
       >
-        America
+        Americas
       </li>
       <li
         className='option'
@@ -46,6 +46,9 @@ const Select = ({ isFocused, onFilterSelect }) => {
         onClick={() => onFilterSelect("oceania")}
       >
         Oceania
+      </li>
+      <li className='option' tabIndex={0} onClick={() => onFilterSelect("all")}>
+        All
       </li>
     </ul>
   );

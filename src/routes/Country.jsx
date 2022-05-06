@@ -4,6 +4,7 @@ import useFetch from "../hooks/useFetch";
 import Spinner from "../components/Spinner";
 import Error from "../components/Error";
 import BorderLink from "../components/BorderLink";
+import IconButton from "../components/IconButton";
 import { bestMatch } from "../utils/bestMatch";
 import "../styles/Country.css";
 
@@ -27,10 +28,8 @@ const Country = () => {
   } else if (countryResults) {
     const country = bestMatch(countryName, countryResults);
     return (
-      <main className='country'>
-        <button className='btn' onClick={() => navigate(-1)}>
-          &larr; Back
-        </button>
+      <div className='country'>
+        <IconButton icon='back' path={-1} text='Back' />
         <div className='country-container'>
           <div className='country-flag_wrap'>
             <img
@@ -97,7 +96,7 @@ const Country = () => {
             </div>
           </div>
         </div>
-      </main>
+      </div>
     );
   }
 };

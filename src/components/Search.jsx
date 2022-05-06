@@ -21,7 +21,7 @@ const Search = () => {
     if (ev.code === "Enter" && searchText.length > 0) {
       ev.target.blur();
       setSearchText("");
-      navigate(`/results/${searchText}`);
+      navigate(`/search-results/${searchText}`);
     }
   };
 

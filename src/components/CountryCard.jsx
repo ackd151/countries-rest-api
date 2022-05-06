@@ -3,16 +3,18 @@ import { Link } from "react-router-dom";
 import "../styles/CountryCard.css";
 
 const CountryCard = ({ country }) => {
+  const urlDashName = country.name.common.split(" ").join("-");
+
   return (
-    <Link to={`/${country.name}`}>
+    <Link to={`/country/${urlDashName}`}>
       <div className='country-card'>
         <img
-          src={country.flag}
-          alt={`${country.name}'s national flag`}
+          src={country.flags.png}
+          alt={`${country.name.common}'s national flag`}
           className='flag'
         />
         <div className='country_info'>
-          <div className='country_name'>{country.name}</div>
+          <div className='country_name'>{country.name.common}</div>
           <div className='country_pop'>
             Population:{" "}
             <span className='stat'>

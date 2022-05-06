@@ -1,0 +1,23 @@
+.no-results_wrap {
+  height: 100%;
+  /* width: min-content; */
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-elements);
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+}
+
+.nav-btns {
+  margin: 1rem 0;
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.nav-btn {
+  flex-grow: 1;
+}
