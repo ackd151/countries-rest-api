@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import CountryCard from "../components/CountryCard";
 import NoResults from "../components/NoResults";
 import useFetch from "../hooks/useFetch";
 
-const SearchResults = ({ filterVal }) => {
+const SearchResults = ({ filterVal, filterVis }) => {
   const { query } = useParams();
-
-  console.log(filterVal);
 
   const { data, loading, error } = useFetch(
     `https://restcountries.com/v3.1/name/${query}`
   );
+
+  useEffect(() => {
+    filterVis(data !== null);
+  }, [filterVis, data]);
 
   if (error) {
     return <NoResults query={query} />;

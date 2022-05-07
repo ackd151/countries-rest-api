@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./Header";
 import Search from "./Search";
@@ -13,17 +13,14 @@ import "../styles/App.css";
 function App() {
   const [filterVal, setFilterVal] = useState("all");
   const filterSelectHandler = (selected) => {
-    console.log(selected);
     setFilterVal(selected);
   };
 
   // Hide filter mechanism on non list page (i.e. /country/{country})
-  const path = usePath();
-  const [showFilter, setShowFilter] = useState(true);
-  useEffect(() => {
-    console.log(path);
-    setShowFilter(!path.split("/").includes("country"));
-  }, [path]);
+  const [showFilter, setShowFilter] = useState(false);
+  const handleFilterVis = (vis) => {
+    setShowFilter(vis);
+  };
 
   return (
     <div className='App'>
@@ -40,13 +37,30 @@ function App() {
               path='/'
               element={<Navigate replace to='/countries' />}
             />
-            <Route exact path='/countries' element={<Countries />} />
-            <Route exact path='/countries/:region' element={<Countries />} />
-            <Route exact path='/country/:countryName' element={<Country />} />
+            <Route
+              exact
+              path='/countries'
+              element={<Countries filterVis={handleFilterVis} />}
+            />
+            <Route
+              exact
+              path='/countries/:region'
+              element={<Countries filterVis={handleFilterVis} />}
+            />
+            <Route
+              exact
+              path='/country/:countryName'
+              element={<Country filterVis={handleFilterVis} />}
+            />
             <Route
               exact
               path='/search-results/:query'
-              element={<SearchResults filterVal={filterVal} />}
+              element={
+                <SearchResults
+                  filterVal={filterVal}
+                  filterVis={handleFilterVis}
+                />
+              }
             />
           </Routes>
         </main>

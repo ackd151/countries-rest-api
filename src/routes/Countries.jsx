@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 import Spinner from "../components/Spinner";
 import CountryCard from "../components/CountryCard";
 import { useParams } from "react-router-dom";
 
-const Countries = () => {
+const Countries = ({ filterVis }) => {
   const { region } = useParams();
   const url = region
     ? `https://restcountries.com/v3.1/region/${region}`
     : "https://restcountries.com/v3.1/all";
 
   const { data: countries, loading, error } = useFetch(url);
+  useEffect(() => {
+    filterVis(true);
+  }, []);
 
   if (error) {
     return <div className='error'>Error</div>;

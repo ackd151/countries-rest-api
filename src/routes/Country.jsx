@@ -1,16 +1,20 @@
-import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import Spinner from "../components/Spinner";
 import Error from "../components/Error";
 import BorderLink from "../components/BorderLink";
+import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import IconButton from "../components/IconButton";
 import { bestMatch } from "../utils/bestMatch";
 import "../styles/Country.css";
 
-const Country = () => {
+const Country = ({ filterVis }) => {
   const { countryName } = useParams();
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    filterVis(false);
+  }, [filterVis]);
 
   const reUrlifiedName = countryName.split("-").join(" ");
 
@@ -29,7 +33,7 @@ const Country = () => {
     const country = bestMatch(countryName, countryResults);
     return (
       <div className='country'>
-        <IconButton icon='back' path={-1} text='Back' />
+        <IconButton icon={faArrowLeftLong} path={-1} text='Back' />
         <div className='country-container'>
           <div className='country-flag_wrap'>
             <img

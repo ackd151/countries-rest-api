@@ -1,25 +1,22 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 import IconButton from "./IconButton";
+import { faArrowLeftLong, faHouse } from "@fortawesome/free-solid-svg-icons";
 
 import "../styles/NoResults.css";
 
 const NoResults = ({ query }) => {
-  const navigate = useNavigate();
+  //   useEffect(() => {
+  //     filterVis(false);
+  //   }, [filterVis]);
+
   return (
     <div className='no-results'>
       <div className='no-results_wrap'>
         <h2>No results found for "{query}"</h2>
       </div>
       <div className='nav-btns'>
-        <IconButton icon='back' path={-1} text='Back' />
-        {/* <button className='btn nav-btn' onClick={() => navigate(-1)}>
-          &larr; Back
-        </button> */}
-        <IconButton icon='home' path='/' text='Home' />
-        {/* <button className='btn nav-btn' onClick={() => navigate("/")}>
-          Home
-        </button> */}
+        <IconButton icon={faArrowLeftLong} path={-1} text='Back' />
+        <IconButton icon={faHouse} path={-1} text='Back' />
       </div>
     </div>
   );
