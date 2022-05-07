@@ -1,22 +1,63 @@
 .filter {
   background-color: var(--color-elements);
   position: relative;
-  padding: 1rem 4rem 1rem 2rem;
+  padding: 1rem 2rem;
   border-radius: 5px;
   box-shadow: var(--box-shadow);
 }
 
-.filter:hover {
+.filter-element {
+  display: flex;
+  gap: 5rem;
+}
+
+.filter-element:hover,
+.filter-element:focus {
+  opacity: 0.7;
   cursor: pointer;
 }
+
+.filter-element:hover .anim-wrap {
+  animation: bounce 1s linear infinite;
+}
+
 .filter:focus {
   outline: 0px;
-}
-.filter:focus .label,
-.filter:hover .label {
-  opacity: 0.7;
 }
 
 .filter .label {
   padding: 0;
+}
+
+.caret {
+  transition: all 0.2s;
+}
+
+.rotated {
+  transition: all 0.2s;
+  transform: rotate(180deg);
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-2px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .filter {
+    flex-grow: 0;
+  }
 }

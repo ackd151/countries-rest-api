@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
@@ -21,7 +21,6 @@ const Search = () => {
     if (ev.code === "Enter" && searchText.length > 0) {
       ev.target.blur();
       setSearchText("");
-      // <Navigate replace to={`/search-results/${searchText}`} />;
       navigate(`/search-results/${searchText}`);
     }
   };

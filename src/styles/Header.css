@@ -25,3 +25,13 @@
 .theme-toggle:hover {
   cursor: pointer;
 }
+
+@media screen and (max-width: 600px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}

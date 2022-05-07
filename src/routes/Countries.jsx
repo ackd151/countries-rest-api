@@ -4,7 +4,7 @@ import Spinner from "../components/Spinner";
 import CountryCard from "../components/CountryCard";
 import { useParams } from "react-router-dom";
 
-const Countries = ({ filterVis }) => {
+const Countries = ({ filterVis, searchVis }) => {
   const { region } = useParams();
   const url = region
     ? `https://restcountries.com/v3.1/region/${region}`
@@ -12,8 +12,9 @@ const Countries = ({ filterVis }) => {
 
   const { data: countries, loading, error } = useFetch(url);
   useEffect(() => {
+    searchVis(true);
     filterVis(true);
-  }, []);
+  }, [searchVis, filterVis]);
 
   if (error) {
     return <div className='error'>Error</div>;

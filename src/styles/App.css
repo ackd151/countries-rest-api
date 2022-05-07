@@ -91,6 +91,7 @@ main {
 
 .search-and-filter {
   display: flex;
+  gap: 1rem;
   margin: 3rem;
   justify-content: space-between;
 }
@@ -110,5 +111,15 @@ main {
 @media screen and (max-width: 600px) {
   .countries {
     grid-template-columns: 1fr;
+  }
+
+  main {
+    margin: 0 4rem 3rem;
+  }
+
+  .search-and-filter {
+    margin: 1rem 1rem 3rem;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

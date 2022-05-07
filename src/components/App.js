@@ -16,20 +16,26 @@ function App() {
     setFilterVal(selected);
   };
 
-  // Hide filter mechanism on non list page (i.e. /country/{country})
+  // Hide search/filter mechanism on non list page (i.e. /country/{country})
   const [showFilter, setShowFilter] = useState(false);
   const handleFilterVis = (vis) => {
     setShowFilter(vis);
+  };
+  const [showSearch, setShowSearch] = useState(false);
+  const handleSearchVis = (vis) => {
+    setShowSearch(vis);
   };
 
   return (
     <div className='App'>
       <BrowserRouter>
         <Header />
-        <div className='search-and-filter'>
-          <Search />
-          {showFilter && <Filter onFilterSelect={filterSelectHandler} />}
-        </div>
+        {(showSearch || showFilter) && (
+          <div className='search-and-filter'>
+            {showSearch && <Search />}
+            {showFilter && <Filter onFilterSelect={filterSelectHandler} />}
+          </div>
+        )}
         <main className='content'>
           <Routes>
             <Route
@@ -40,17 +46,32 @@ function App() {
             <Route
               exact
               path='/countries'
-              element={<Countries filterVis={handleFilterVis} />}
+              element={
+                <Countries
+                  filterVis={handleFilterVis}
+                  searchVis={handleSearchVis}
+                />
+              }
             />
             <Route
               exact
               path='/countries/:region'
-              element={<Countries filterVis={handleFilterVis} />}
+              element={
+                <Countries
+                  filterVis={handleFilterVis}
+                  searchVis={handleSearchVis}
+                />
+              }
             />
             <Route
               exact
               path='/country/:countryName'
-              element={<Country filterVis={handleFilterVis} />}
+              element={
+                <Country
+                  filterVis={handleFilterVis}
+                  searchVis={handleSearchVis}
+                />
+              }
             />
             <Route
               exact
@@ -59,6 +80,7 @@ function App() {
                 <SearchResults
                   filterVal={filterVal}
                   filterVis={handleFilterVis}
+                  searchVis={handleSearchVis}
                 />
               }
             />

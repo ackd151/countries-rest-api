@@ -5,7 +5,7 @@ import CountryCard from "../components/CountryCard";
 import NoResults from "../components/NoResults";
 import useFetch from "../hooks/useFetch";
 
-const SearchResults = ({ filterVal, filterVis }) => {
+const SearchResults = ({ filterVal, searchVis, filterVis }) => {
   const { query } = useParams();
 
   const { data, loading, error } = useFetch(
@@ -13,8 +13,9 @@ const SearchResults = ({ filterVal, filterVis }) => {
   );
 
   useEffect(() => {
+    searchVis(true);
     filterVis(data !== null);
-  }, [filterVis, data]);
+  }, [searchVis, filterVis, data]);
 
   if (error) {
     return <NoResults query={query} />;

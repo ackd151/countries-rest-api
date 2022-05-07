@@ -1,15 +1,18 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Select from "./Select";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
 
 import "../styles/Filter.css";
 
 const Filter = ({ onFilterSelect }) => {
+  library.add(faCaretDown);
   const navigate = useNavigate();
 
   const [filterVis, setFilterVis] = useState(false);
   const toggleVisOnKey = (ev) => {
-    console.log(ev.keyCode);
     if (ev.keyCode === 13 || ev.keyCode === 32) {
       ev.preventDefault();
       setFilterVis(!filterVis);
@@ -47,16 +50,17 @@ const Filter = ({ onFilterSelect }) => {
       tabIndex={0}
       onKeyDown={toggleVisOnKey}
       ref={optionsRef}
+      onClick={() => {
+        setFilterVis(!filterVis);
+      }}
     >
       <div className='filter-element'>
-        <span
-          className='label'
-          onClick={() => {
-            setFilterVis(!filterVis);
-          }}
-        >
-          Filter by Region
-        </span>
+        <span className='label'>Filter by Region</span>
+        <div className={`caret ${filterVis ? "rotated" : ""}`}>
+          <div className='anim-wrap'>
+            <FontAwesomeIcon icon='fa-solid fa-caret-down' />
+          </div>
+        </div>
       </div>
       {filterVis && (
         <Select isFocused={filterVis} onFilterSelect={filterSelected} />

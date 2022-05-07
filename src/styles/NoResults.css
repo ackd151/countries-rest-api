@@ -1,6 +1,5 @@
 .no-results_wrap {
   height: 100%;
-  /* width: min-content; */
   padding: 3rem;
   display: flex;
   flex-direction: column;
@@ -16,8 +15,4 @@
   display: flex;
   gap: 1rem;
   width: 100%;
-}
-
-.nav-btn {
-  flex-grow: 1;
 }

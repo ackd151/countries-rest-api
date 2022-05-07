@@ -9,12 +9,13 @@ import IconButton from "../components/IconButton";
 import { bestMatch } from "../utils/bestMatch";
 import "../styles/Country.css";
 
-const Country = ({ filterVis }) => {
+const Country = ({ searchVis, filterVis }) => {
   const { countryName } = useParams();
 
   useEffect(() => {
+    searchVis(false);
     filterVis(false);
-  }, [filterVis]);
+  }, [searchVis, filterVis]);
 
   const reUrlifiedName = countryName.split("-").join(" ");
 
