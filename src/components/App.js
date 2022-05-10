@@ -41,11 +41,16 @@ function App() {
             <Route
               exact
               path='/'
-              element={<Navigate replace to='/countries' />}
+              element={<Navigate replace to='/countries-rest-api/countries' />}
             />
             <Route
               exact
-              path='/countries'
+              path='/countries-rest-api'
+              element={<Navigate replace to='/countries-rest-api/countries' />}
+            />
+            <Route
+              exact
+              path='/countries-rest-api/countries'
               element={
                 <Countries
                   filterVis={handleFilterVis}
@@ -55,7 +60,7 @@ function App() {
             />
             <Route
               exact
-              path='/countries/:region'
+              path='/countries-rest-api/countries/:region'
               element={
                 <Countries
                   filterVis={handleFilterVis}
@@ -65,7 +70,7 @@ function App() {
             />
             <Route
               exact
-              path='/country/:countryName'
+              path='/countries-rest-api/country/:countryName'
               element={
                 <Country
                   filterVis={handleFilterVis}
@@ -75,7 +80,7 @@ function App() {
             />
             <Route
               exact
-              path='/search-results/:query'
+              path='/countries-rest-api/search-results/:query'
               element={
                 <SearchResults
                   filterVal={filterVal}

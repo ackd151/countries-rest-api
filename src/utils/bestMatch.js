@@ -2,7 +2,7 @@ export const bestMatch = (actual, tests) => {
   let minDiff = 100; // arbitrary number for starting difference value
   let bestMatch = null;
   for (const test of tests) {
-    const testDiff = levenshteinDistance(actual, test.name.common);
+    const testDiff = levenshteinDistance(actual, test.name);
     if (testDiff <= minDiff) {
       minDiff = testDiff;
       bestMatch = test;

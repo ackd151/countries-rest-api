@@ -1,55 +1,51 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import "../styles/Select.css";
 
-const Select = ({ isFocused, onFilterSelect }) => {
-  const firstOption = useRef();
+const Select = ({ isOpen, onFilterSelect, toggleVis }) => {
+  const [selected, setSelected] = useState(0);
+  const filters = ["africa", "americas", "asia", "europe", "oceana", "all"];
+
+  const list = useRef();
 
   useEffect(() => {
-    firstOption.current.focus();
-  }, [isFocused]);
+    list.current.children[selected].focus();
+  }, [isOpen, selected]);
+
+  const keyDownHandler = (ev) => {
+    ev.preventDefault();
+    switch (ev.keyCode) {
+      case 27:
+        toggleVis(ev);
+        break;
+      case 40:
+        setSelected((prev) => (prev + 1) % filters.length);
+        break;
+      case 38:
+        setSelected((prev) => {
+          return prev === 0 ? filters.length - 1 : prev - 1;
+        });
+        break;
+      case 13:
+        onFilterSelect(filters[selected]);
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
-    <ul className='select'>
-      <li
-        className='option'
-        tabIndex={0}
-        ref={firstOption}
-        onClick={() => onFilterSelect("africa")}
-      >
-        Africa
-      </li>
-      <li
-        className='option'
-        tabIndex={0}
-        onClick={() => onFilterSelect("americas")}
-      >
-        Americas
-      </li>
-      <li
-        className='option'
-        tabIndex={0}
-        onClick={() => onFilterSelect("asia")}
-      >
-        Asia
-      </li>
-      <li
-        className='option'
-        tabIndex={0}
-        onClick={() => onFilterSelect("europe")}
-      >
-        Europe
-      </li>
-      <li
-        className='option'
-        tabIndex={0}
-        onClick={() => onFilterSelect("oceania")}
-      >
-        Oceania
-      </li>
-      <li className='option' tabIndex={0} onClick={() => onFilterSelect("all")}>
-        All
-      </li>
+    <ul className='select' onKeyDown={keyDownHandler} id='list' ref={list}>
+      {filters.map((filter) => (
+        <li
+          className='option'
+          key={filter}
+          tabIndex={0}
+          onClick={() => onFilterSelect(filter)}
+        >
+          {filter}
+        </li>
+      ))}
     </ul>
   );
 };

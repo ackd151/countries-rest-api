@@ -21,10 +21,6 @@
   animation: bounce 1s linear infinite;
 }
 
-.filter:focus {
-  outline: 0px;
-}
-
 .filter .label {
   padding: 0;
 }

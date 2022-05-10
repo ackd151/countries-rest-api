@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,6 +10,7 @@ library.add(faMagnifyingGlass);
 
 const Search = () => {
   const navigate = useNavigate();
+  const searchRef = useRef();
 
   const [searchText, setSearchText] = useState("");
 
@@ -17,28 +18,42 @@ const Search = () => {
     setSearchText(ev.target.value);
   };
 
-  const onEnterHandler = (ev) => {
-    if (ev.code === "Enter" && searchText.length > 0) {
-      ev.target.blur();
+  const keyDownHandler = (ev) => {
+    if (ev.keyCode === 13) {
+      ev.preventDefault();
+      submitSearchHandler();
+    }
+  };
+
+  const submitSearchHandler = () => {
+    const query = searchText;
+    if (query.length > 0) {
       setSearchText("");
-      navigate(`/search-results/${searchText}`);
+      searchRef.current.blur();
+      navigate(`/countries-rest-api/search-results/${query}`);
     }
   };
 
   return (
     <div className='search'>
-      <FontAwesomeIcon
-        icon='fa-solid fa-magnifying-glass'
-        className='search-icon'
-      />
-      <input
-        type='text'
-        placeholder='Search for a country...'
-        className='search-input'
-        onKeyDown={onEnterHandler}
-        value={searchText}
-        onChange={onSearchTextChangeHandler}
-      />
+      <div className='icon-wrap' onClick={submitSearchHandler}>
+        <FontAwesomeIcon
+          icon='fa-solid fa-magnifying-glass'
+          className='search-icon'
+        />
+      </div>
+      <form action='#'>
+        <input
+          type='text'
+          placeholder='Search for a country...'
+          className='search-input'
+          onKeyDown={keyDownHandler}
+          ref={searchRef}
+          value={searchText}
+          onChange={onSearchTextChangeHandler}
+        />
+        <button className='no-vis' type='submit' />
+      </form>
     </div>
   );
 };

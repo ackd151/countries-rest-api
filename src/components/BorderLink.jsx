@@ -16,7 +16,7 @@ const BorderLink = ({ borderCode }) => {
   } else if (data) {
     const urlCountry = data.name.split(" ").join("-");
     return (
-      <Link to={`/country/${urlCountry}`}>
+      <Link to={`/countries-rest-api/country/${urlCountry}`}>
         <button className='btn'>{data.name}</button>
       </Link>
     );

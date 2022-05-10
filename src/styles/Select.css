@@ -16,11 +16,8 @@
 }
 
 .option {
+  text-transform: capitalize;
   padding: 0.5rem;
-}
-
-.option:focus {
-  text-decoration: underline;
 }
 
 .option:hover {

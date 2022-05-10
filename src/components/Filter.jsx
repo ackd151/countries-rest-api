@@ -16,6 +16,8 @@ const Filter = ({ onFilterSelect }) => {
     if (ev.keyCode === 13 || ev.keyCode === 32) {
       ev.preventDefault();
       setFilterVis(!filterVis);
+    } else if (ev.keyCode === 27) {
+      setFilterVis(false);
     }
   };
 
@@ -38,8 +40,10 @@ const Filter = ({ onFilterSelect }) => {
     // Else we are in '/countries/results' and we want to filter only the subset obtained via the search
     if (window.location.pathname.split("/").includes("search-results")) {
       onFilterSelect(region);
+    } else if (region !== "all") {
+      navigate(`countries-rest-api/countries/${region}`);
     } else {
-      navigate(`/countries/${region}`);
+      navigate("/");
     }
     setFilterVis(false);
   };
@@ -63,7 +67,11 @@ const Filter = ({ onFilterSelect }) => {
         </div>
       </div>
       {filterVis && (
-        <Select isFocused={filterVis} onFilterSelect={filterSelected} />
+        <Select
+          isOpen={filterVis}
+          onFilterSelect={filterSelected}
+          toggleVis={toggleVisOnKey}
+        />
       )}
     </div>
   );

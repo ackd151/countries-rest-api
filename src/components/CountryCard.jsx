@@ -6,7 +6,7 @@ const CountryCard = ({ country }) => {
   const urlDashName = country.name.common.split(" ").join("-");
 
   return (
-    <Link to={`/country/${urlDashName}`}>
+    <Link to={`/countries-rest-api/country/${urlDashName}`}>
       <div className='country-card'>
         <img
           src={country.flags.png}
