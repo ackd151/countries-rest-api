@@ -58,7 +58,12 @@ const Filter = ({ onFilterSelect }) => {
         setFilterVis(!filterVis);
       }}
     >
-      <div className='filter-element'>
+      <div
+        className='filter-element'
+        role='button'
+        aria-expanded={filterVis}
+        aria-controls='list'
+      >
         <span className='label'>Filter by Region</span>
         <div className={`caret ${filterVis ? "rotated" : ""}`}>
           <div className='anim-wrap'>
@@ -68,6 +73,7 @@ const Filter = ({ onFilterSelect }) => {
       </div>
       {filterVis && (
         <Select
+          ariaLabel={"Filter countries by region"}
           isOpen={filterVis}
           onFilterSelect={filterSelected}
           toggleVis={toggleVisOnKey}

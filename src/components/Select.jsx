@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 import "../styles/Select.css";
 
-const Select = ({ isOpen, onFilterSelect, toggleVis }) => {
+const Select = ({ isOpen, onFilterSelect, toggleVis, ariaLabel }) => {
   const [selected, setSelected] = useState(0);
   const filters = ["africa", "americas", "asia", "europe", "oceana", "all"];
 
@@ -35,7 +35,13 @@ const Select = ({ isOpen, onFilterSelect, toggleVis }) => {
   };
 
   return (
-    <ul className='select' onKeyDown={keyDownHandler} id='list' ref={list}>
+    <ul
+      className='select'
+      onKeyDown={keyDownHandler}
+      id='list'
+      ref={list}
+      aria-label={ariaLabel}
+    >
       {filters.map((filter) => (
         <li
           className='option'

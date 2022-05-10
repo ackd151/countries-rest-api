@@ -6,7 +6,7 @@ import Filter from "./Filter";
 import Countries from "../routes/Countries";
 import Country from "../routes/Country";
 import SearchResults from "../routes/SearchResults";
-import { usePath } from "../hooks/usePath";
+import Footer from "./Footer";
 
 import "../styles/App.css";
 
@@ -89,8 +89,14 @@ function App() {
                 />
               }
             />
+            {/* Catch-all, mostly for redirect when requesting specific route without spa running in client already */}
+            <Route
+              path='/*'
+              element={<Navigate replace to='/countries-rest-api/countries' />}
+            />
           </Routes>
         </main>
+        <Footer />
       </BrowserRouter>
     </div>
   );
