@@ -90,10 +90,7 @@ function App() {
               }
             />
             {/* Catch-all, mostly for redirect when requesting specific route without spa running in client already */}
-            <Route
-              path='/*'
-              element={<Navigate replace to='/countries-rest-api/countries' />}
-            />
+            <Route path='/*' element={<Navigate replace to='/' />} />
           </Routes>
         </main>
         <Footer />
