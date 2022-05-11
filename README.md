@@ -12,8 +12,6 @@ This is a solution to the [REST Countries API with color theme switcher challeng
   - [What I learned](#lessons-learned)
 - [Author](#author)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -29,7 +27,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://ackd151.github.io/countries-rest-api/countries)
+- Live Site URL: [countries-rest-api](https://ackd151.github.io/countries-rest-api/countries)
 
 ## My process
 
