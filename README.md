@@ -27,7 +27,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [countries-rest-api](https://ackd151.github.io/countries-rest-api/countries)
+- Live Site URL: [countries-rest-api](https://ackd151.github.io/countries-rest-api)
 
 ## My process
 
